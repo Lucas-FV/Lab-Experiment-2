@@ -4,13 +4,15 @@ import os
 
 # Configurações iniciais
 ARQUIVO_CSV_REPOSITORIOS = 'top_1000_java_repos.csv'
-CAMINHO_CK_JAR = 'ck/target/ck.jar'
+CAMINHO_CK_JAR = 'ck.jar'
 PASTA_DESTINO_CLONE = 'repositorio_teste_s01'
 
 def obter_primeiro_repositorio(csv_file):
     with open(csv_file, mode='r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
-        return next(reader) # Pega apenas a primeira linha de dados
+        for _ in range(10):
+            next(reader)
+        return next(reader)
 
 def clonar_repositorio(clone_url, destino):
     print(f"Clonando {clone_url} para a pasta '{destino}'...")
